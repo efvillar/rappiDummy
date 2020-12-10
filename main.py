@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.get("/ordenes/")
 async def obtener_ordenes():
-    ordenes = db. obtener_ordenes()
+    ordenes = db.obtener_ordenes()
     return  ordenes
 
 @app.post("/ordenes/crear/")
