@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class Order(BaseModel):
+class Orden(BaseModel):
     id: int
     fecha: str
     usuario: str
@@ -9,8 +9,8 @@ class Order(BaseModel):
 
 
 ordenes = {
-    1: Order(id=1, fecha="20-11-2020", usuario="pepe", tienda="dominos", valor=2000),
-    2: Order(id=2, fecha="20-11-2020", usuario="juan", tienda="dominos", valor=3000),
+    1: Orden(id=1, fecha="20-11-2020", usuario="pepe", tienda="dominos", valor=2000),
+    2: Orden(id=2, fecha="20-11-2020", usuario="juan", tienda="dominos", valor=3000),
 }
 
 def obtener_ordenes():
@@ -19,3 +19,10 @@ def obtener_ordenes():
     for e in ordenes:
         lista_ordenes.append(ordenes[e])
     return lista_ordenes
+
+def crear_orden(orden: Orden):
+    if orden.id in ordenes:
+        return False
+    else:
+        ordenes[orden.id] = orden
+        return True
